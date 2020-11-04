@@ -56,21 +56,30 @@
       //For loop for hours to print all at once 
       //divHour not defined currently
       for(i = 0; i < hours.length; i++){
-        $(divHour).text(hours[i]);
+        $(".hour").text(hours[i]);
       }
 
       //If need to create timeblocks through script then:
       //ask if this is correct?
+      //Do columns work here??
       function blockSetUp(){
+        var container = $(".container");
         var divRow = $("<div>").addClass("row");
-        $(".container").append(divRow);
-        var divHour = $("<div>").addClass("hour");
-        var divInput = $("<div>").attr("id","user-input");
-        var saveButton = $("<div>").addClass("saveBtn");
+        $(container).append(divRow);
+        var divHour = $("<div>").addClass("hour col-lg-2");
+        var divInput = $("<div>").attr("id","user-input").addClass("col-lg-8");
+        var saveButton = $("<div>").addClass("saveBtn col-lg-2");
         $(divRow).append(divHour);
         $(container).append(divInput);
         $(container).append(saveButton);
       }
+
+      console.log(blockSetUp());
+      
+      //create a for each maybe?
+      $.each( , function (i, ) {
+        div.append();
+      });
 
       //Set times to whatever current time is
       function currentTime(){
@@ -95,12 +104,12 @@
       //and save it to local storage for that specific timeblock
       $(".saveBtn").on("click", function saveNew(){
 
-      });
-
       //Set local save
+      localStorage.setItem("", );
 
       //Get local save
-
+      localStorage.setItem("", );
+      });
     </script>
   </body>
 </html>
