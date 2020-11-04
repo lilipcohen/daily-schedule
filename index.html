@@ -67,7 +67,8 @@
         var divRow = $("<div>").addClass("row");
         $(container).append(divRow);
         var divHour = $("<div>").addClass("hour col-lg-2");
-        var divInput = $("<div>").attr("id","user-input").addClass("col-lg-8");
+        //missing textarea?
+        var divInput = $("<div>").attr("id","user-input").addClass("past col-lg-8");
         var saveButton = $("<div>").addClass("saveBtn col-lg-2");
         $(divRow).append(divHour);
         $(container).append(divInput);
@@ -77,7 +78,7 @@
       console.log(blockSetUp());
       
       //create a for each maybe?
-      $.each( , function (i, ) {
+      $.each(  , function (i, ) {
         div.append();
       });
 
@@ -94,7 +95,8 @@
         //Make sure to set currentHour to 9-5?
       }
 
-      //Create an onclick function for the timeblocks that 
+      //Create an onclick function for the timeblocks that?
+      //Is that necessary if there's a textarea?
       //redefine the userInput for each timeblock
       $(".time-block").on("click", function userText(){
 
