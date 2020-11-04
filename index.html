@@ -31,9 +31,14 @@
     <div class="container">
       <!-- Timeblocks go here -->
       <div class="row">
-        <div class="col-lg-2 hour">9:00AM</div>
-        <div class="col-lg-8"></div>
-        <div class="col-lg-2 saveBtn"></div>
+        <div class="col-lg-2 hour">
+          <p>9:00AM</p>
+        </div>
+        <div id="sched-event" class="col-lg-8 present description">
+          <textarea name="text" id="user-input" cols="30" rows="1"></textarea>
+        </div>
+        <button type="button" class=" col-lg-2 saveBtn"></button>
+
       </div>
     </div>
 
@@ -45,7 +50,7 @@
       //Prints current date at the top
       $("#currentDay").text(moment().format("dddd,  MMM Do"));
 
-      
+
     </script>
   </body>
 </html>
