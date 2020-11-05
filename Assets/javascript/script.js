@@ -4,7 +4,7 @@ $(document).ready(function () {
 
         var userInput = "";
         var hours = ["9","10","11","12","1","2","3","4","5"];
-        var currentHour = moment().hours();
+        var currentHour = moment().hours(9,10,11,12,13,14,15,16,17);
       
         //For loop for hours to print all at once 
         //divHour not defined currently
@@ -15,21 +15,28 @@ $(document).ready(function () {
         //If need to create timeblocks through script then:
         //ask if this is correct?
         //Do columns work here??
+    for (var i = 0; i < 9; i++){
         function blockSetUp(){
             var container = $(".container");
+            var timeBlock = $("<div>").addClass("time-block");
             var divRow = $("<div>").addClass("row");
             var divHour = $("<div>").addClass("hour col-lg-2");
-            var divInput = $("<div>").attr("id", "user-input").addClass("col-lg-8");
-            var text = $("<textarea>");
+            var divInput = $("<div>").addClass("past col-lg-8");
+            var text = $("<textarea>").attr("id", "user-input");
             var saveButton = $("<div>").addClass("saveBtn col-lg-2");
-            $(container).append(divRow);
+            var descrip = $("<div>").addClass("description");
+            $(container).append(timeBlock);
+            $(timeBlock).append(divRow);
             $(divRow).append(divHour);
             $(divRow).append(divInput);
             $(divRow).append(saveButton);
             $(divInput).append(text);
+            $(timeBlock).append(descrip);
         }
+        blockSetUp();
+    }
 
-        console.log(blockSetUp());
+        //console.log(blockSetUp());
       
         //create a for each maybe?
         $.each(""  , function (i, ) {
@@ -41,7 +48,9 @@ $(document).ready(function () {
           //use moment.js to set time equal to value of class hour 9AM-5PM
             currentHour === hours;
           //if hour = currentHour then hour class is present
-
+            if (hours < currentHour) {
+                
+            }
           //else if hour < currentHour then hour class is past
 
           //else if hour > currentHour then hour class is future
