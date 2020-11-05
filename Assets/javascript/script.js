@@ -4,7 +4,7 @@ $(document).ready(function () {
 
         var userInput = "";
         var hours = ["9","10","11","12","1","2","3","4","5"];
-        var currentHour = moment().hours(9,10,11,12,13,14,15,16,17);
+        var currentHour = moment().hours();
       
         //For loop for hours to print all at once 
         //divHour not defined currently
@@ -15,31 +15,26 @@ $(document).ready(function () {
         //If need to create timeblocks through script then:
         //ask if this is correct?
         //Do columns work here??
-    for (var i = 0; i < 9; i++){
-        function blockSetUp(){
-            var container = $(".container");
-            var timeBlock = $("<div>").addClass("time-block");
-            var divRow = $("<div>").addClass("row");
-            var divHour = $("<div>").addClass("hour col-lg-2");
-            var divInput = $("<textarea>").addClass("past col-lg-8");
-            var saveButton = $("<div>").addClass("saveBtn col-lg-2");
-            var descrip = $("<div>").addClass("description");
-            $(container).append(timeBlock);
-            $(timeBlock).append(divRow);
-            $(divRow).append(divHour);
-            $(divRow).append(divInput);
-            $(divRow).append(saveButton);
-            $(timeBlock).append(descrip);
+        for (var i = 0; i < 9; i++){
+            function blockSetUp(){
+                var container = $(".container");
+                var timeBlock = $("<div>").addClass("time-block");
+                var divRow = $("<div>").addClass("row");
+                var divHour = $("<div>").addClass("hour col-lg-2");
+                var textInput = $("<textarea>").addClass("past col-lg-8");
+                var saveButton = $("<button>").addClass("saveBtn col-lg-2");
+                var descrip = $("<div>").addClass("description");
+                $(container).append(timeBlock);
+                $(timeBlock).append(divRow);
+                $(divRow).append(divHour);
+                $(divHour).text(hours[i]);
+                $(divRow).append(textInput);
+                $(divRow).append(saveButton);
+                $(timeBlock).append(descrip);
+            }
+            blockSetUp();
         }
-        blockSetUp();
-    }
 
-        //console.log(blockSetUp());
-      
-        //create a for each maybe?
-        $.each(""  , function (i, ) {
-          div.append();
-        });
 
         //Set times to whatever current time is
         function compareTime(){
