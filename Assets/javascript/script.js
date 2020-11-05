@@ -13,7 +13,7 @@ $(document).ready(function () {
         { time: 17, input: "" }
     ]
 
-    //var hours = ["9","10","11","12","1","2","3","4","5"];
+    var hours = ["9","10","11","12","1","2","3","4","5"];
     var currentHour = moment().hours();
     console.log(currentHour);
     
@@ -22,10 +22,8 @@ $(document).ready(function () {
 
     //For loop for hours to print all at once 
     //divHour not defined currently
-    /*for(i = 0; i < hours.length; i++){
-        $(".hour").text(hours[i]);
-    }
-    */
+    for(i = 0; i < hours.length; i++)
+
     //Timeblocks will repeat 9 times for 9am-5pm
     for (var i = 0; i < 9; i++){
         var container = $(".container");
@@ -38,7 +36,7 @@ $(document).ready(function () {
         $(container).append(timeBlock);
         $(timeBlock).append(divRow);
         $(divRow).append(divHour);
-        //$(divHour).text(hours[i]);
+        $(divHour).text(hours[i]);
         $(divRow).append(textInput);
         $(divRow).append(saveButton);
         $(timeBlock).append(descrip);
