@@ -21,8 +21,7 @@ $(document).ready(function () {
             var timeBlock = $("<div>").addClass("time-block");
             var divRow = $("<div>").addClass("row");
             var divHour = $("<div>").addClass("hour col-lg-2");
-            var divInput = $("<div>").addClass("past col-lg-8");
-            var text = $("<textarea>").attr("id", "user-input");
+            var divInput = $("<textarea>").addClass("past col-lg-8");
             var saveButton = $("<div>").addClass("saveBtn col-lg-2");
             var descrip = $("<div>").addClass("description");
             $(container).append(timeBlock);
@@ -30,7 +29,6 @@ $(document).ready(function () {
             $(divRow).append(divHour);
             $(divRow).append(divInput);
             $(divRow).append(saveButton);
-            $(divInput).append(text);
             $(timeBlock).append(descrip);
         }
         blockSetUp();
