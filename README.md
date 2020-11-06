@@ -9,4 +9,4 @@ I dynamically created HTML using jquery and was able to have the time blocks be 
 ![Image](Assets/Images/image-1.png)
 ![Image](Assets/Images/image-2.png)
 ![Image](Assets/Images/image-3.png)
-[Link]()
+[Link](https://lilipcohen.github.io/daily-schedule/)
