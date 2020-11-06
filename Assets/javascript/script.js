@@ -1,7 +1,6 @@
 $(document).ready(function () {
     var savedInput = JSON.parse(localStorage.getItem('workday-schedule')) || {}
 
-    var hours = ["9","10","11","12","1","2","3","4","5"];
     var revisedHours = [{
         label: "9am",
         value: 9
@@ -32,7 +31,7 @@ $(document).ready(function () {
         value: 17
     }
 ];
-
+    //Current hour in real time from moment.js
     var currentHour = moment().hours();
     
     //Prints current date at the top
@@ -63,19 +62,14 @@ $(document).ready(function () {
          else if (currentHourData.value > currentHour) {
              textInput.addClass("future");
          }
-         //Make sure to set currentHour to 9-5?
 
          textInput.attr('data-time', currentHourData.value)
 
-        var saveButton = $('<button>').addClass("saveBtn col-lg-2");
+            var saveButton = $('<button>').addClass("saveBtn col-lg-2");
 
-        saveButton.attr('data-time', currentHourData.value)
+            saveButton.attr('data-time', currentHourData.value)
 
-        var descrip = $("<div>").addClass("description");
-            
-        // localStorage.getItem(userInput, '');
-        // //Set local save
-        // localStorage.setItem(userInput, '');
+            var descrip = $("<div>").addClass("description");
 
         $(container).append(timeBlock);
         $(timeBlock).append(divRow);
@@ -86,10 +80,7 @@ $(document).ready(function () {
         $(timeBlock).append(descrip);
     }
 
-    //Timeblocks will repeat 9 times for 9am-5pm
-    // for (var i = 0; i < 9; i++){
-    // }
-
+    //Set local.storage
     $(".saveBtn").on("click", function (e){
         var clickedHour = $(e.target).attr('data-time')
         var input = $('textarea[data-time="' + clickedHour + '"]').val()
