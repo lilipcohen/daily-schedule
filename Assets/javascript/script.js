@@ -47,7 +47,7 @@ $(document).ready(function () {
         var divRow = $("<div>").addClass("row");
         var divHour = $("<div>").addClass("hour col-lg-2");
         var textInput = $("<textarea>").addClass("col-lg-8");
-
+        textInput.css("color", "black");
         textInput.val(savedInput[currentHourData.value])
 
          //if hour = currentHour then hour class is present
@@ -68,6 +68,7 @@ $(document).ready(function () {
             var saveButton = $('<button>').addClass("saveBtn col-lg-2");
 
             saveButton.attr('data-time', currentHourData.value)
+            saveButton.html("<i class='far fa-arrow-alt-circle-down'></i>");
 
             var descrip = $("<div>").addClass("description");
 
