@@ -6,7 +6,7 @@ For this project I was to make a daily work schedule using moment.js and jquery.
 
 I dynamically created HTML using jquery and was able to have the time blocks be for however many hours I wanted to list. Lastly, I made it so that the save icon using Font Awesome would save to that time block whatever the user's event or daily plan they had would save on click.
 
-![Image]()
-![Image]()
-![Image]()
+![Image](Assets/Images/image-1.png)
+![Image](Assets/Images/image-2.png)
+![Image](Assets/Images/image-3.png)
 [Link]()
