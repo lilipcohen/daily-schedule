@@ -1,77 +1,101 @@
 $(document).ready(function () {
-    var userInput = [
-        { time: 7, input: "" },
-        { time: 8, input: "" },
-        { time: 9, input: "Wake up" },
-        { time: 10, input: "" },
-        { time: 11, input: "Go to work" },
-        { time: 12, input: "" },
-        { time: 13, input: "" },
-        { time: 14, input: "" },
-        { time: 15, input: "" },
-        { time: 16, input: "" },
-        { time: 17, input: "" }
-    ]
+    var savedInput = JSON.parse(localStorage.getItem('workday-schedule')) || {}
 
     var hours = ["9","10","11","12","1","2","3","4","5"];
+    var revisedHours = [{
+        label: "9am",
+        value: 9
+    },
+    {   label: "10am",
+        value: 10
+        },
+    {   label: "11am",
+        value: 11
+        },
+    {   label: "12pm",
+        value: 12
+        },
+    {   label: "1pm",
+        value: 13
+        },
+    {   label: "2pm",
+        value: 14
+        },
+    {   label: "3pm",
+        value: 15
+        },
+    {   label: "4pm",
+        value: 16
+        },
+    {
+        label: "5pm",
+        value: 17
+    }
+];
+
     var currentHour = moment().hours();
-    console.log(currentHour);
     
     //Prints current date at the top
     $("#currentDay").text(moment().format("dddd, MMM Do"));
 
     //For loop for hours to print all at once 
     //divHour not defined currently
-    for(i = 0; i < hours.length; i++)
+    for(i = 0; i < revisedHours.length; i++) {
+        var currentHourData = revisedHours[i]
 
-    //Timeblocks will repeat 9 times for 9am-5pm
-    for (var i = 0; i < 9; i++){
         var container = $(".container");
         var timeBlock = $("<div>").addClass("time-block");
         var divRow = $("<div>").addClass("row");
         var divHour = $("<div>").addClass("hour col-lg-2");
         var textInput = $("<textarea>").addClass("col-lg-8");
-        var saveButton = $("<button>").addClass("saveBtn col-lg-2");
+
+        textInput.val(savedInput[currentHourData.value])
+
+         //if hour = currentHour then hour class is present
+         if (currentHourData.value < currentHour) {
+             textInput.addClass("past");
+         }
+         //else if hour < currentHour then hour class is past
+         else if (currentHourData.value === currentHour) {
+             textInput.addClass("present");
+         }
+         //else if hour > currentHour then hour class is future
+         else if (currentHourData.value > currentHour) {
+             textInput.addClass("future");
+         }
+         //Make sure to set currentHour to 9-5?
+
+         textInput.attr('data-time', currentHourData.value)
+
+        var saveButton = $('<button>').addClass("saveBtn col-lg-2");
+
+        saveButton.attr('data-time', currentHourData.value)
+
         var descrip = $("<div>").addClass("description");
+            
+        // localStorage.getItem(userInput, '');
+        // //Set local save
+        // localStorage.setItem(userInput, '');
+
         $(container).append(timeBlock);
         $(timeBlock).append(divRow);
         $(divRow).append(divHour);
-        $(divHour).text(hours[i]);
+        $(divHour).text(currentHourData.label);
         $(divRow).append(textInput);
         $(divRow).append(saveButton);
         $(timeBlock).append(descrip);
     }
 
+    //Timeblocks will repeat 9 times for 9am-5pm
+    // for (var i = 0; i < 9; i++){
+    // }
 
-    //Set times to whatever current time is
-    function compareTime(){
-        //use moment.js to set time equal to value of class hour 9AM-5PM
-        parseInt(hours)
-        currentHour === hours;
-        //if hour = currentHour then hour class is present
-        if (hours < currentHour) {
-            textInput.addClass("past");
-        }
-        //else if hour < currentHour then hour class is past
-        else if (hours === currentHour) {
-            textInput.addClass("present");
-        }
-        //else if hour > currentHour then hour class is future
-        else if (hours > currentHour) {
-            textInput.addClass("future");
-        }
-        //Make sure to set currentHour to 9-5?
-    }
-    compareTime();
+    $(".saveBtn").on("click", function (e){
+        var clickedHour = $(e.target).attr('data-time')
+        var input = $('textarea[data-time="' + clickedHour + '"]').val()
 
-    //Create save on click save button to take the textarea
-    //and save it to local storage for that specific timeblock
-     //Get local save
-    localStorage.getItem(userInput, '');
+        savedInput[clickedHour] = input
 
-    $(".saveBtn").on("click", function saveNew(){
-
-    //Set local save
-    localStorage.setItem(userInput, '');
+        localStorage.setItem('workday-schedule', JSON.stringify(savedInput))
     });
 });
